@@ -1,9 +1,17 @@
+import Thumbnail from "./Thumbnail";
+
 /**
+ * Asynchronously fetches and returns eagle data from the defined url.
+ * Throws an error if the environment variable EAGLE_TOKEN or EAGLE_ENDPOINT is not defined or empty.
+ * Extra query parameters can be added to the url request if required.
  *
- * @param {string} urlPath slash beginning path
- * @param addQueryParams
+ * @param {string} urlPath - The path to the eagle data on the server.
+ * @param {string[]} [addQueryParams] - Additional query parameters to be added to the url request.
+ * @returns {Promise<object>} - An object of the parsed JSON response from the fetch request.
+ * @throws {Error} - If EAGLE_TOKEN or EAGLE_ENDPOINT is undefined or empty, or if the data fetch fails.
+ * @async
  */
-async function getEagleData(urlPath: string, addQueryParams?: string[]) {
+async function getEagleData(urlPath: string, addQueryParams?: string[]): Promise<object> {
     if (typeof process.env.EAGLE_TOKEN === "undefined" && process.env.EAGLE_TOKEN !== "") {
         throw new Error("Empty EAGLE_TOKEN");
     }
@@ -21,29 +29,38 @@ async function getEagleData(urlPath: string, addQueryParams?: string[]) {
     const res = await fetch(process.env.EAGLE_ENDPOINT.concat(urlPath, "?", query.toString()));
 
     if (!res.ok) {
-        throw new Error('Failed to fetch data')
+        throw new Error("Failed to fetch data");
     }
 
-    return res.json();
+    return JSON.parse(await res.json());
 }
 
-async function getEagleItemList() {
-    const endpoint = '/api/item/list'
-    getEagleData('endpoint', )
+/**
+ * Asynchronously fetches a list of eagle items.
+ *
+ * @param {string[]=} [queryParams=['limit=10', 'orderBy=CREATEDATE']]  Optional query parameters
+ * @return {Promise<Object>} Returns promise object resolved with fetched data.
+ */
+async function getEagleItemList(
+    queryParams: string[] | undefined = ["limit=10", "orderBy=CREATEDATE"],
+): Promise<object> {
+    const endpoint = "/api/item/list";
+    return await getEagleData(endpoint, queryParams);
 }
 
-async function getThumbnails() {}
+async function getThumbnails(thumbnailId: string) {
+    const endpoint = "/api/item/thumbnail";
+    return await getEagleData(endpoint, ['id=' + thumbnailId]);
+}
 
 export default async function Thumbnails() {
-    const data = await getEagleData("/api/item/list", []);
+    const eagleItemList = await getEagleItemList();
+
     // console.log(data)
     return (
         <main>
             <ul className="responsive-images">
-                <li>
-                    <img className="responsive" src="http://placehold.jp/512x768.png" alt="Placeholder image" />
-                    <p>Text for image</p>
-                </li>
+                <Thumbnail thumbnailId="aaa"/>
                 <li>
                     <img className="responsive" src="http://placehold.jp/512x768.png" alt="Placeholder image" />
                     <p>Text for image</p>
