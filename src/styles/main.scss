@@ -1,0 +1,35 @@
+body {
+  color: #d0d0d1;
+  background-color: #353639;
+}
+
+.container {
+  justify-content: space-between;
+  display: flex;
+}
+
+aside {
+  width: 240px;
+  background-color: #353639;
+  margin: 20px 24px;
+}
+
+main {
+  background-color: #303134;
+  flex: 1;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.responsive-images {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 15px;
+  display: flex;
+}
+
+.responsive {
+  max-width: 115px;
+}
