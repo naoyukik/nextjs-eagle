@@ -1,0 +1,151 @@
+openapi: 3.0.1
+info:
+    title: Item API
+    version: 1.0.0
+
+paths:
+    /api/item/list:
+        get:
+            summary: Get items that match the filter condition.
+            parameters:
+                - name: limit
+                  in: query
+                  description: "The number of items to be displayed. the default number is 200."
+                  required: false
+                  schema:
+                      type: integer
+                      example: 10
+                - name: offset
+                  in: query
+                  description: "Offset a collection of results from the api. Start with 0."
+                  required: false
+                  schema:
+                      type: integer
+                      example: 0
+                - name: orderBy
+                  in: query
+                  description: "The sorting order. Add a minus sign for descending order."
+                  required: false
+                  schema:
+                      type: string
+                      enum:
+                          - CREATEDATE
+                          - FILESIZE
+                          - NAME
+                          - RESOLUTION
+                      example: "-FILESIZE"
+                - name: keyword
+                  in: query
+                  description: "Filter by the keyword"
+                  required: false
+                  schema:
+                      type: string
+                      example: 'character'
+                - name: ext
+                  in: query
+                  description: "Filter by the extension type, e.g.: jpg , png"
+                  required: false
+                  schema:
+                      type: string
+                      example: 'svg'
+                - name: tags
+                  in: query
+                  description: "Filter by tags. Use , to divide different tags."
+                  required: false
+                  schema:
+                      type: array
+                      items:
+                          type: string
+                      example: ['test', 'test2']
+                - name: folders
+                  in: query
+                  description: "Filter by Folders.  Use , to divide folder IDs."
+                  required: false
+                  schema:
+                      type: array
+                      items:
+                          type: string
+                      example: ['KB90R2VNPHH3V']
+
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    status:
+                                        type: string
+                                        example: "success"
+                                    data:
+                                        type: array
+                                        items:
+                                            $ref: '#/components/schemas/Item'
+
+components:
+    schemas:
+        Palette:
+            type: object
+            properties:
+                color:
+                    type: array
+                    items:
+                        type: integer
+                    example: [236, 240, 242]
+                ratio:
+                    type: number
+                    example: 44
+        Item:
+            type: object
+            properties:
+                id:
+                    type: string
+                    example: "KB91GNOPDDVTH"
+                name:
+                    type: string
+                    example: "running-man"
+                size:
+                    type: integer
+                    example: 36382
+                ext:
+                    type: string
+                    example: "svg"
+                tags:
+                    type: array
+                    items:
+                        type: string
+                    example: []
+                folders:
+                    type: array
+                    items:
+                        type: string
+                    example: ["KB90QZMU641LI"]
+                isDeleted:
+                    type: boolean
+                    example: false
+                url:
+                    type: string
+                    example: "https://cn.eagle.cool/extensions"
+                annotation:
+                    type: string
+                    example: ""
+                modificationTime:
+                    type: integer
+                    example: 1591774540009
+                height:
+                    type: integer
+                    example: 166
+                width:
+                    type: integer
+                    example: 203
+                lastModified:
+                    type: integer
+                    example: 1591774540171
+                palettes:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Palette'
+                    example:
+                        - color: [236, 240, 242]
+                          ratio: 44
