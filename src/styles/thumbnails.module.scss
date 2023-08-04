@@ -9,3 +9,9 @@
   overflow-wrap: break-word;
   text-align: center;
 }
+
+.imageView {
+  object-fit: contain;
+  position: relative !important;
+  margin: auto;
+}

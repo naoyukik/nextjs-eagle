@@ -1,8 +1,7 @@
 import Thumbnail from "./Thumbnail";
 import { getEagleData } from "@/utils/baseApiUtils";
-import { ItemThumbnailResponse } from "@/models/itemThumbnailResponseInterfaces";
 import { ItemListData, ItemListResponse } from "@/models/itemListResponse";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 /**
  * Asynchronously fetches a list of eagle items.
@@ -23,7 +22,6 @@ interface ThumbnailsProps {
 
 export default async function Thumbnails(): Promise<React.JSX.Element> {
   const response = await getEagleItemList();
-  console.log(response.data);
 
   return (
     <main>
