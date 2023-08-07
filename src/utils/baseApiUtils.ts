@@ -24,9 +24,7 @@ export async function getEagleData<T>(urlPath: string, addQueryParams?: string[]
   if (typeof process.env.NEXT_PUBLIC_EAGLE_ENDPOINT === "undefined" && process.env.NEXT_PUBLIC_EAGLE_ENDPOINT !== "") {
     throw new Error("Empty NEXT_PUBLIC_NEXT_PUBLIC_EAGLE_ENDPOINT");
   }
-  const res = await fetch(process.env.NEXT_PUBLIC_EAGLE_ENDPOINT.concat(urlPath, "?", query.toString()), {
-    cache: "no-store",
-  });
+  const res = await fetch(process.env.NEXT_PUBLIC_EAGLE_ENDPOINT.concat(urlPath, "?", query.toString()));
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");

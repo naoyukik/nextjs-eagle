@@ -82,6 +82,29 @@ paths:
                                         type: array
                                         items:
                                             $ref: '#/components/schemas/Item'
+    /api/item/info:    # new endpoint
+        get:
+            summary: Get specific item details based on ID.
+            parameters:
+                - name: id
+                  in: path
+                  description: "ID of the file"
+                  required: true
+                  schema:
+                      type: string
+            responses:
+                200:
+                    description: Successful operation.
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    status:
+                                        type: string
+                                        example: "success"
+                                    data:
+                                        $ref: '#/components/schemas/Item'
 
 components:
     schemas:
@@ -142,6 +165,9 @@ components:
                 lastModified:
                     type: integer
                     example: 1591774540171
+                noThumbnail:
+                    type: boolean
+                    example: true
                 palettes:
                     type: array
                     items:

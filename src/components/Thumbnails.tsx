@@ -1,7 +1,7 @@
 import Thumbnail from "./Thumbnail";
 import { getEagleData } from "@/utils/baseApiUtils";
 import { ItemListData, ItemListResponse } from "@/models/itemListResponse";
-import React from "react";
+import React, { cache } from "react";
 
 /**
  * Asynchronously fetches a list of eagle items.
@@ -20,14 +20,17 @@ interface ThumbnailsProps {
   eagleItemList: ItemListData[];
 }
 
-export default async function Thumbnails(): Promise<React.JSX.Element> {
+export default async function Thumbnails({ setSelectedImage }): Promise<React.JSX.Element> {
+  // const response = cache(async () => {
+  //   return await getEagleItemList();
+  // });
   const response = await getEagleItemList();
 
   return (
     <main>
       <ul className="responsive-images">
-        {response.data.map((item) => {
-          return <Thumbnail item={item} />;
+        {response.data.map((item: ItemListData, index: number) => {
+          return <Thumbnail key={index} item={item} setSelectedImage={setSelectedImage} />;
         })}
       </ul>
     </main>
