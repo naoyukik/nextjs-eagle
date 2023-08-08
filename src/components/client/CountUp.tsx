@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import UserList from "@/components/UserList";
 
-const CountUp = ({ children }: { children: React.ReactNode }) => {
+const CountUp = ({ children }) => {
   const [count, setCount] = useState<number>(0);
   const countUp = () => {
     setCount((prev) => prev + 1);
