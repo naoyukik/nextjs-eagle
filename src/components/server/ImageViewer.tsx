@@ -11,7 +11,7 @@ import styles from "../styles/thumbnails.module.scss";
  *
  * @return {React.Element} - The rendered component.
  */
-export default function ImageViewer({ params }: { params: { slug: string[] } }) {
+const ImageViewer = ({ params }: { params: { slug: string[] } }) => {
   const imageUrl =
     process.env.NEXT_PUBLIC_MEDIA_ENDPOINT + "/images/" + params.slug[0] + ".info/" + params.slug[1] + ".png";
 
@@ -23,3 +23,5 @@ export default function ImageViewer({ params }: { params: { slug: string[] } }) 
     </main>
   );
 }
+
+export default ImageViewer;

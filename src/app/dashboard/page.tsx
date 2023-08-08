@@ -1,10 +1,9 @@
-"use client";
-
-import Navigation from "@/components/Navigation";
+import Navigation from "@/components/server/Navigation";
 import ImageInformation from "@/components/ImageInformation";
-import Thumbnails from "@/components/Thumbnails";
-import BaseLayout from "@/app/layout/BaseLayout";
-import React, { useState } from "react";
+import Thumbnails from "@/components/server/Thumbnails";
+import React from "react";
+import DashboardLayout from "@/app/layout/DashboardLayout";
+import Dashboard from '@/components/client/Dashboard'
 
 // export default async function Dashboard(): Promise<React.JSX.Element> {
 //   const [selectedImage, setSelectedImage]: [null, (value: ((prevState: null) => null) | null) => void] = useState(null);
@@ -17,14 +16,16 @@ import React, { useState } from "react";
 //   );
 // }
 
-const Dashboard = async () => {
-  const [selectedImage, setSelectedImage] = useState(null);
-  console.log(selectedImage);
+const DashboardHome = async () => {
+  // const [selectedImage, setSelectedImage] = useState(null);
+  // console.log(selectedImage);
   return (
-    <BaseLayout>
-      <Thumbnails setSelectedImage={setSelectedImage} />
-    </BaseLayout>
+    <DashboardLayout>
+      <Dashboard>
+        <Thumbnails />
+      </Dashboard>
+    </DashboardLayout>
   );
 };
 
-export default Dashboard;
+export default DashboardHome;

@@ -20,7 +20,7 @@ interface ThumbnailsProps {
   eagleItemList: ItemListData[];
 }
 
-export default async function Thumbnails({ setSelectedImage }): Promise<React.JSX.Element> {
+const Thumbnails = ({ setSelectedImage }): Promise<React.JSX.Element> => {
   // const response = cache(async () => {
   //   return await getEagleItemList();
   // });
@@ -36,3 +36,5 @@ export default async function Thumbnails({ setSelectedImage }): Promise<React.JS
     </main>
   );
 }
+
+export default Thumbnails;

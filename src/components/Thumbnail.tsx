@@ -4,7 +4,7 @@ import Image from "next/image";
 import React from "react";
 import styles from "../styles/thumbnails.module.scss";
 
-export default async function Thumbnail({ item, setSelectedImage }) {
+export default async function Thumbnail({ item }) {
   const imageUrl =
     process.env.NEXT_PUBLIC_MEDIA_ENDPOINT + "/images/" + item.id + ".info/" + item.name + "." + item.ext;
   console.log(setSelectedImage);

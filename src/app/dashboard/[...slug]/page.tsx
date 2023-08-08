@@ -1,7 +1,7 @@
 import BaseLayout from "@/app/layout/BaseLayout";
-import Navigation from "@/components/Navigation";
+import Navigation from "@/components/server/Navigation";
 import ImageInformation from "@/components/ImageInformation";
-import ImageViewer from "@/components/ImageViewer";
+import ImageViewer from "@/components/server/ImageViewer";
 
 /**
  * Renders a page with an image viewer and image information based on the given params.
