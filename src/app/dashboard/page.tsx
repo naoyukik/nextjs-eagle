@@ -1,9 +1,9 @@
-import Navigation from "@/components/server/Navigation";
-import ImageInformation from "@/components/ImageInformation";
-import Thumbnails from "@/components/server/Thumbnails";
-import React from "react";
-import DashboardLayout from "@/app/layout/DashboardLayout";
+import Navigation from '@/components/server/Navigation'
+import Thumbnails from '@/components/server/Thumbnails'
+import React from 'react'
+import DashboardLayout from '@/app/layout/DashboardLayout'
 import Dashboard from '@/components/client/Dashboard'
+import ImageInformation from '@/components/ImageInformation'
 
 // export default async function Dashboard(): Promise<React.JSX.Element> {
 //   const [selectedImage, setSelectedImage]: [null, (value: ((prevState: null) => null) | null) => void] = useState(null);
@@ -21,9 +21,11 @@ const DashboardHome = async () => {
   // console.log(selectedImage);
   return (
     <DashboardLayout>
+      <Navigation />
       <Dashboard>
-        <Thumbnails />
       </Dashboard>
+      <Thumbnails />
+      <ImageInformation />
     </DashboardLayout>
   );
 };

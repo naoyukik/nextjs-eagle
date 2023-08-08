@@ -7,7 +7,6 @@ import styles from "../styles/thumbnails.module.scss";
 export default async function Thumbnail({ item }) {
   const imageUrl =
     process.env.NEXT_PUBLIC_MEDIA_ENDPOINT + "/images/" + item.id + ".info/" + item.name + "." + item.ext;
-  console.log(setSelectedImage);
 
   return (
     <li className={styles.liLayout}>
@@ -18,7 +17,6 @@ export default async function Thumbnail({ item }) {
           width={115}
           height={173}
           alt="Placeholder image"
-          onMouseOver={() => setSelectedImage(item.id)}
         />
       </Link>
       <p>{item.name}</p>
