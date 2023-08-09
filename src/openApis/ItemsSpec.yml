@@ -4,6 +4,16 @@ info:
     version: 1.0.0
 
 paths:
+    /api/library/info:
+        get:
+            summary: Get detailed information of the library currently running.
+            responses:
+                200:
+                    description: successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/LibraryInfo'
     /api/item/list:
         get:
             summary: Get items that match the filter condition.
@@ -175,3 +185,145 @@ components:
                     example:
                         - color: [236, 240, 242]
                           ratio: 44
+        Folder:
+            type: object
+            properties:
+                id:
+                    type: string
+                    example: "32455218-9e79-61ca-7e1d-034c0ed9f33b"
+                name:
+                    type: string
+                    example: "Poster Design"
+                description:
+                    type: string
+                    example: ""
+                children:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Folder'
+                modificationTime:
+                    type: integer
+                    example: 1487586362385
+                tags:
+                    type: array
+                    items:
+                        type: string
+                iconColor:
+                    type: string
+                    example: "red"
+                password:
+                    type: string
+                    example: ""
+                passwordTips:
+                    type: string
+                    example: ""
+                coverId:
+                    type: string
+                    example: "a387c5d6-5c27-4f1e-96d1-af7ae0256887"
+                orderBy:
+                    type: string
+                    example: "MANUAL"
+                sortIncrease:
+                    type: boolean
+                    example: true
+        SmartFolder:
+            type: object
+            properties:
+                id:
+                    type: string
+                    example: "JQQAV9CA71QSZ"
+                icon:
+                    type: string
+                    example: "calendar-week"
+                name:
+                    type: string
+                    example: "Last Week"
+                description:
+                    type: string
+                    example: ""
+                modificationTime:
+                    type: integer
+                    example: 1542962230621
+                conditions:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/SmartFolderCondition'
+                orderBy:
+                    type: string
+                    example: "FILESIZE"
+                sortIncrease:
+                    type: boolean
+                    example: true
+        QuickAccess:
+            type: object
+            properties:
+                type:
+                    type: string
+                    example: "smartFolder"
+                id:
+                    type: string
+                    example: "7de0bdb8-3124-add7-4a1f-b51f126aa738"
+        TagsGroups:
+            type: object
+            properties:
+                id:
+                    type: string
+                    example: "c549d2a8-c187-c612-617f-83fcef4976a2"
+                name:
+                    type: string
+                    example: "Location"
+                tags:
+                    type: array
+                    items:
+                        type: string
+                        example: "Kitchen"
+                color:
+                    type: string
+                    example: "yellow"
+        LibraryInfo:
+            type: object
+            properties:
+                status:
+                    type: string
+                    example: "success"
+                data:
+                    type: object
+                    properties:
+                        folders:
+                            type: array
+                            items:
+                                $ref: '#/components/schemas/Folder'
+                        smartFolders:
+                            type: array
+                            items:
+                                $ref: '#/components/schemas/SmartFolder'
+                        quickAccess:
+                            type: array
+                            items:
+                                $ref: '#/components/schemas/QuickAccess'
+                        tagsGroups:
+                            type: array
+                            items:
+                                $ref: '#/components/schemas/TagsGroups'
+        SmartFolderCondition:
+            type: object
+            properties:
+                match:
+                    type: string
+                    example: "OR"
+                rules:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            method:
+                                type: string
+                                example: "within"
+                            property:
+                                type: string
+                                example: "createTime"
+                            value:
+                                type: array
+                                items:
+                                    type: integer
+                                    example: 7
