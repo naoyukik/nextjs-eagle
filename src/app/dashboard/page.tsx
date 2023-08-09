@@ -22,10 +22,9 @@ const DashboardHome = async () => {
   return (
     <DashboardLayout>
       <Navigation />
-      <Dashboard>
-      </Dashboard>
+      <Dashboard></Dashboard>
       <Thumbnails />
-      <ImageInformation />
+      <ImageInformation params={undefined} />
     </DashboardLayout>
   );
 };

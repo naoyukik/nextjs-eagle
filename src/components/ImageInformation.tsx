@@ -13,14 +13,17 @@ async function getItemInfo(thumbnailId: string): Promise<ItemInfoResponse> {
 }
 
 /**
- * Provides information about the currently selected image.
+ * Displays information about an image based on the provided parameters.
  *
- * @param params - The parameters for fetching image information.
- * @param params.slug - The slug(s) used to select the image. [0: Directory name and Object ID, 1: File name]
- * @return The component displaying the image information.
+ * @param {Object} options - The options for fetching image information.
+ * @param {Object} options.params - The parameters for fetching image information.
+ * @param {string[]} options.params.slug - The slug of the image. [0: Directory name and Object ID, 1: File name]
+ *
+ * @returns {Promise<Object>} - A promise that resolves to an HTML element representing the image information.
  */
-export default async function ImageInformation({ params }: { params: { slug: string[] } }) {
+export default async function ImageInformation({ params }: { params?: { slug: string[] } }) {
   if (typeof params === "undefined") {
+    console.log('ImageInformation.tsx: params is undefined')
     return (
       <aside>
         <p>This text explains the image that's currently selected.</p>
@@ -29,6 +32,7 @@ export default async function ImageInformation({ params }: { params: { slug: str
   }
   const itemInfoData: ItemInfoResponse = await getItemInfo(params.slug[0]);
   if (typeof itemInfoData === "undefined") {
+    console.log('ImageInformation.tsx: itemInfoData is undefined')
     return (
       <aside>
         <p>This text explains the image that's currently selected.</p>
