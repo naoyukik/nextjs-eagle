@@ -1,26 +1,31 @@
-import { getEagleData } from '@/utils/baseApiUtils'
-import { LibraryInfoResponse } from '@/models/libraryInfoResponse'
+import { getEagleData } from "@/utils/baseApiUtils";
+import { LibraryInfoResponse } from "@/models/libraryInfoResponse";
+import Link from "next/link";
 
 async function getEagleLibraryInfo(): Promise<LibraryInfoResponse> {
-  const endpoint = '/api/library/info'
-  return await getEagleData<LibraryInfoResponse>(endpoint)
+  const endpoint = "/api/library/info";
+  return await getEagleData<LibraryInfoResponse>(endpoint);
 }
 
-const Navigation = () => {
-  getEagleLibraryInfo().then((response) => {
-    const items = response.data
-  })
+const Navigation = async () => {
+  const items = await getEagleLibraryInfo().then((response) => {
+    return response.data;
+  });
+
+  console.log(items);
 
   return (
     <aside>
-      <h2>ライブラリー</h2>
+      <h2>スマートフォルダ</h2>
       <ul>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
+        {items.smartFolders.map((item) => (
+          <li key={item.id}>
+            <Link href={`/dashboard/?folder=${item.id}`}>{item.name}</Link>
+          </li>
+        ))}
       </ul>
     </aside>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;
