@@ -2,6 +2,9 @@ import { getEagleData } from '@/utils/baseApiUtils'
 import { ItemListData, ItemListResponse } from '@/models/itemListResponse'
 import React from 'react'
 import Thumbnail from '@/components/Thumbnail'
+import { DashboardHomeProps } from '@/app/dashboard/page'
+
+const initialQueryParams = ["limit=6", "orderBy=CREATEDATE"]
 
 /**
  * Asynchronously fetches a list of eagle items.
@@ -10,7 +13,7 @@ import Thumbnail from '@/components/Thumbnail'
  * @return {Promise<Object>} Returns promise object resolved with fetched data.
  */
 async function getEagleItemList(
-  queryParams: string[] | undefined = ["limit=6", "orderBy=CREATEDATE"],
+  queryParams: string[],
 ): Promise<ItemListResponse> {
   const endpoint = "/api/item/list";
   return await getEagleData<ItemListResponse>(endpoint, queryParams);
@@ -20,11 +23,17 @@ interface ThumbnailsProps {
   eagleItemList: ItemListData[];
 }
 
-const Thumbnails = async () => {
+const Thumbnails = async (props: DashboardHomeProps) => {
   // const response = cache(async () => {
   //   return await getEagleItemList();
   // });
-  const response = await getEagleItemList();
+  console.log(initialQueryParams)
+  const queryParams = [...initialQueryParams];
+  console.log(queryParams)
+  if (props.searchParams && typeof props.searchParams.folder !== 'undefined') queryParams.push(`folders=${props.searchParams.folder}`)
+  console.log(queryParams)
+
+  const response = await getEagleItemList(queryParams);
 
   return (
     <main>

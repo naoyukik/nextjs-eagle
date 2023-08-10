@@ -1,0 +1,12 @@
+.folders {
+  &__list {
+    border-radius: 4px;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 7px;
+
+    &:hover {
+      background-color: #4a4a4d;
+    }
+  }
+}

@@ -1,9 +1,9 @@
-import Navigation from "@/components/server/Navigation";
-import Thumbnails from "@/components/server/Thumbnails";
-import React from "react";
-import DashboardLayout from "@/app/layout/DashboardLayout";
-import Dashboard from "@/components/client/Dashboard";
-import ImageInformation from "@/components/ImageInformation";
+import Navigation from '@/components/server/Navigation'
+import Thumbnails from '@/components/server/Thumbnails'
+import React from 'react'
+import DashboardLayout from '@/app/layout/DashboardLayout'
+import Dashboard from '@/components/client/Dashboard'
+import ImageInformation from '@/components/ImageInformation'
 
 // export default async function Dashboard(): Promise<React.JSX.Element> {
 //   const [selectedImage, setSelectedImage]: [null, (value: ((prevState: null) => null) | null) => void] = useState(null);
@@ -16,18 +16,24 @@ import ImageInformation from "@/components/ImageInformation";
 //   );
 // }
 
-const DashboardHome = async (folder) => {
+export interface DashboardHomeProps {
+  params: object;
+  searchParams: {folder: string};
+}
+
+const DashboardHome = async ({searchParams}: DashboardHomeProps) => {
   // const [selectedImage, setSelectedImage] = useState(null);
   // console.log(selectedImage);
-  console.log(folder);
+  // console.log(request)
+  console.log(searchParams.folder)
   return (
     <DashboardLayout>
       <Navigation />
       <Dashboard></Dashboard>
-      <Thumbnails />
+      <Thumbnails searchParams={searchParams}  />
       <ImageInformation params={undefined} />
     </DashboardLayout>
-  );
-};
+  )
+}
 
-export default DashboardHome;
+export default DashboardHome

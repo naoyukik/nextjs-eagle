@@ -23,7 +23,7 @@ async function getItemInfo(thumbnailId: string): Promise<ItemInfoResponse> {
  */
 export default async function ImageInformation({ params }: { params?: { slug: string[] } }) {
   if (typeof params === "undefined") {
-    console.log('ImageInformation.tsx: params is undefined')
+    // console.log('ImageInformation.tsx: params is undefined')
     return (
       <aside>
         <p>This text explains the image that's currently selected.</p>
@@ -32,7 +32,7 @@ export default async function ImageInformation({ params }: { params?: { slug: st
   }
   const itemInfoData: ItemInfoResponse = await getItemInfo(params.slug[0]);
   if (typeof itemInfoData === "undefined") {
-    console.log('ImageInformation.tsx: itemInfoData is undefined')
+    // console.log('ImageInformation.tsx: itemInfoData is undefined')
     return (
       <aside>
         <p>This text explains the image that's currently selected.</p>
