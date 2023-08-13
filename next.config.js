@@ -5,7 +5,7 @@ dns.setDefaultResultOrder("ipv4first");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["placehold.jp", "localhost", "172.22.207.117", "192.168.2.212", "172.28.241.141"],
+    domains: ["typicode.com", "placehold.jp", "localhost", "172.22.207.117", "192.168.2.212", "172.28.241.141", "172.28.240.1"],
   },
   sassOptions: {
     includePaths: [join(__dirname, "styles")],

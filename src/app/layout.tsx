@@ -1,5 +1,6 @@
 import '../styles/reset.scss'
 import '../styles/main.scss'
+import '../styles/foundation.scss'
 import React from 'react'
 
 export default function RootLayout({
