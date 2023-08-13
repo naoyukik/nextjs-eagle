@@ -17,20 +17,19 @@ import ImageInformation from '@/components/ImageInformation'
 // }
 
 export interface DashboardHomeProps {
-  params: object;
-  searchParams: {folder: string};
+  params?: object
+  searchParams: { folder?: string }
 }
 
-const DashboardHome = async ({searchParams}: DashboardHomeProps) => {
+const DashboardHome = async (request: DashboardHomeProps) => {
   // const [selectedImage, setSelectedImage] = useState(null);
   // console.log(selectedImage);
-  // console.log(request)
-  console.log(searchParams.folder)
+
   return (
     <DashboardLayout>
       <Navigation />
       <Dashboard></Dashboard>
-      <Thumbnails searchParams={searchParams}  />
+      <Thumbnails searchParams={request.searchParams} />
       <ImageInformation params={undefined} />
     </DashboardLayout>
   )
