@@ -4,6 +4,7 @@ import React from 'react'
 import DashboardLayout from '@/app/layout/DashboardLayout'
 import Dashboard from '@/components/client/Dashboard'
 import ImageInformation from '@/components/ImageInformation'
+import InfiniteThumbnails from '@/components/client/InfiniteThumbnails'
 
 // export default async function Dashboard(): Promise<React.JSX.Element> {
 //   const [selectedImage, setSelectedImage]: [null, (value: ((prevState: null) => null) | null) => void] = useState(null);
@@ -28,8 +29,7 @@ const DashboardHome = async (request: DashboardHomeProps) => {
   return (
     <DashboardLayout>
       <Navigation />
-      <Dashboard></Dashboard>
-      <Thumbnails searchParams={request.searchParams} />
+      <InfiniteThumbnails searchParams={request.searchParams} />
       <ImageInformation params={undefined} />
     </DashboardLayout>
   )
