@@ -1,5 +1,6 @@
-import { getEagleData } from "@/utils/baseApiUtils";
-import { ItemInfoResponse } from "@/models/itemInfoResponse";
+import { getEagleData } from '@/utils/baseApiUtils'
+import { ItemInfoResponse } from '@/models/itemInfoResponse'
+import styles from '../styles/navigation.module.scss'
 
 /**
  * Retrieves the thumbnail for a given thumbnailId.
@@ -8,8 +9,8 @@ import { ItemInfoResponse } from "@/models/itemInfoResponse";
  * @return A Promise that resolves with the thumbnail data.
  */
 async function getItemInfo(thumbnailId: string): Promise<ItemInfoResponse> {
-  const endpoint = "/api/item/info";
-  return await getEagleData<ItemInfoResponse>(endpoint, ["id=" + thumbnailId]);
+  const endpoint = '/api/item/info'
+  return await getEagleData<ItemInfoResponse>(endpoint, ['id=' + thumbnailId])
 }
 
 /**
@@ -22,32 +23,32 @@ async function getItemInfo(thumbnailId: string): Promise<ItemInfoResponse> {
  * @returns {Promise<Object>} - A promise that resolves to an HTML element representing the image information.
  */
 export default async function ImageInformation({ params }: { params?: { slug: string[] } }) {
-  if (typeof params === "undefined") {
+  if (typeof params === 'undefined') {
     // console.log('ImageInformation.tsx: params is undefined')
     return (
-      <aside>
+      <aside className={styles.sticky}>
         <p>This text explains the image that's currently selected.</p>
       </aside>
-    );
+    )
   }
-  const itemInfoData: ItemInfoResponse = await getItemInfo(params.slug[0]);
-  if (typeof itemInfoData === "undefined") {
+  const itemInfoData: ItemInfoResponse = await getItemInfo(params.slug[0])
+  if (typeof itemInfoData === 'undefined') {
     // console.log('ImageInformation.tsx: itemInfoData is undefined')
     return (
-      <aside>
+      <aside className={styles.sticky}>
         <p>This text explains the image that's currently selected.</p>
       </aside>
-    );
+    )
   }
-  const items = itemInfoData.data;
+  const items = itemInfoData.data
 
   return (
-    <aside>
+    <aside className={styles.sticky}>
       <ul>
         <li>{items.name}</li>
-        <li>{items.tags.map((t) => t + " ")}</li>
+        <li>{items.tags.map((t) => t + ' ')}</li>
         <li>{items.annotation}</li>
       </ul>
     </aside>
-  );
+  )
 }
