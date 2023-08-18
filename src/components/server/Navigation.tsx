@@ -1,18 +1,18 @@
-import { getEagleData } from "@/utils/baseApiUtils";
-import { LibraryInfoResponse } from "@/models/libraryInfoResponse";
-import Link from "next/link";
-import styles from "../../styles/navigation.module.scss";
-import crypto from "crypto";
+import { getEagleData } from '@/utils/baseApiUtils'
+import { LibraryInfoResponse } from '@/models/libraryInfoResponse'
+import Link from 'next/link'
+import styles from '../../styles/navigation.module.scss'
+import crypto from 'crypto'
 
 async function getEagleLibraryInfo(): Promise<LibraryInfoResponse> {
-  const endpoint = "/api/library/info";
-  return await getEagleData<LibraryInfoResponse>(endpoint);
+  const endpoint = '/api/library/info'
+  return await getEagleData<LibraryInfoResponse>(endpoint)
 }
 
 interface FixedFolder {
-  id: string;
-  name: string;
-  url: string;
+  id: string
+  name: string
+  url: string
 }
 
 function getId(url: string): string {
@@ -22,18 +22,18 @@ function getId(url: string): string {
 const initialFixedFolders: FixedFolder[] = [
   {
     id: getId('/dashboard'),
-    name: "すべての画像",
-    url: "/dashboard",
-  }
+    name: 'すべての画像',
+    url: '/dashboard',
+  },
 ]
 
 const Navigation = async () => {
   const items = await getEagleLibraryInfo().then((response) => {
-    return response.data;
-  });
+    return response.data
+  })
 
   return (
-    <aside>
+    <aside className={styles.sticky}>
       <h2>ライブラリ</h2>
       <ul className={styles.folders}>
         {initialFixedFolders.map((item) => (
@@ -59,7 +59,7 @@ const Navigation = async () => {
         ))}
       </ul>
     </aside>
-  );
-};
+  )
+}
 
-export default Navigation;
+export default Navigation
