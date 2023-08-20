@@ -1,6 +1,6 @@
 import BaseLayout from '@/app/layout/BaseLayout'
 import Navigation from '@/components/server/Navigation'
-import ImageInformation from '@/components/ImageInformation'
+import ImageInformation from '@/components/client/ImageInformation'
 import ImageViewer from '@/components/server/ImageViewer'
 
 /**

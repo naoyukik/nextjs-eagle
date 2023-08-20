@@ -5,7 +5,7 @@ import { Item, ItemInfoResponse } from '@/models/itemInfoResponse'
 import { useAtomValue, useSetAtom } from 'jotai'
 import { selectedImageIDAtom } from '@/components/Jotais'
 import { useEffect, useState } from 'react'
-import styles from '../styles/navigation.module.scss'
+import styles from '../../styles/navigation.module.scss'
 
 /**
  * Retrieves the thumbnail for a given thumbnailId.
