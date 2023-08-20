@@ -5,15 +5,20 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import styles from '../styles/thumbnails.module.scss'
 import { ItemListData } from '@/models/itemListResponse'
+import { useSetAtom } from 'jotai'
+import { selectedImageIDAtom } from '@/components/Jotais'
 
 interface ThumbnailsProps {
   item: ItemListData
   index: number
 }
+
 const Thumbnail = React.forwardRef(({ item, index }: ThumbnailsProps, ref) => {
   const [mouseOverImageId, setMouseOverImageId] = useState('')
+  const setSelectedImageID = useSetAtom(selectedImageIDAtom)
+
   const saveMouseOverImageId = (id: string) => {
-    setMouseOverImageId(id)
+    setSelectedImageID(id)
   }
 
   useEffect(() => {

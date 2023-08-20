@@ -10,28 +10,28 @@
  * @async
  */
 export async function getEagleData<T>(urlPath: string, addQueryParams?: string[]): Promise<T> {
-  if (typeof process.env.NEXT_PUBLIC_EAGLE_TOKEN === "undefined" && process.env.NEXT_PUBLIC_EAGLE_TOKEN !== "") {
-    throw new Error("Empty NEXT_PUBLIC_EAGLE_TOKEN");
+  if (typeof process.env.NEXT_PUBLIC_EAGLE_TOKEN === 'undefined' && process.env.NEXT_PUBLIC_EAGLE_TOKEN !== '') {
+    throw new Error('Empty NEXT_PUBLIC_EAGLE_TOKEN')
   }
 
-  let queryParams = ["token=" + process.env.NEXT_PUBLIC_EAGLE_TOKEN];
+  let queryParams = ['token=' + process.env.NEXT_PUBLIC_EAGLE_TOKEN]
 
-  if (typeof addQueryParams === "object") {
-    queryParams.push(...addQueryParams);
+  if (typeof addQueryParams === 'object') {
+    queryParams.push(...addQueryParams)
   }
-  const queryString = queryParams.join("&");
-  const query = new URLSearchParams(queryString);
-  if (typeof process.env.NEXT_PUBLIC_EAGLE_ENDPOINT === "undefined" && process.env.NEXT_PUBLIC_EAGLE_ENDPOINT !== "") {
-    throw new Error("Empty NEXT_PUBLIC_NEXT_PUBLIC_EAGLE_ENDPOINT");
+  const queryString = queryParams.join('&')
+  const query = new URLSearchParams(queryString)
+  if (typeof process.env.NEXT_PUBLIC_EAGLE_ENDPOINT === 'undefined' && process.env.NEXT_PUBLIC_EAGLE_ENDPOINT !== '') {
+    throw new Error('Empty NEXT_PUBLIC_NEXT_PUBLIC_EAGLE_ENDPOINT')
   }
-  console.log(`baseApiUtils.ts L27: ${process.env.NEXT_PUBLIC_EAGLE_ENDPOINT.concat(urlPath, '?', query.toString())}`);
-  const res = await fetch(process.env.NEXT_PUBLIC_EAGLE_ENDPOINT.concat(urlPath, "?", query.toString()), {
-    cache: "no-store",
-  });
+  console.log(`baseApiUtils.ts L27: ${process.env.NEXT_PUBLIC_EAGLE_ENDPOINT.concat(urlPath, '?', query.toString())}`)
+  const res = await fetch(process.env.NEXT_PUBLIC_EAGLE_ENDPOINT.concat(urlPath, '?', query.toString()), {
+    cache: 'default',
+  })
 
   if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    throw new Error('Failed to fetch data')
   }
 
-  return res.json();
+  return res.json()
 }
