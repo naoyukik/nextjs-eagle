@@ -1,7 +1,7 @@
-import BaseLayout from "@/app/layout/BaseLayout";
-import Navigation from "@/components/server/Navigation";
-import ImageInformation from "@/components/ImageInformation";
-import ImageViewer from "@/components/server/ImageViewer";
+import BaseLayout from '@/app/layout/BaseLayout'
+import Navigation from '@/components/server/Navigation'
+import ImageInformation from '@/components/ImageInformation'
+import ImageViewer from '@/components/server/ImageViewer'
 
 /**
  * Renders a page with an image viewer and image information based on the given params.
@@ -16,5 +16,5 @@ export default function page({ params }: { params: { slug: string[] } }) {
       <ImageViewer params={params} />
       <ImageInformation params={params} />
     </BaseLayout>
-  );
+  )
 }
