@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
-import styles from '../styles/thumbnails.module.scss'
+import styles from '../../styles/thumbnails.module.scss'
 import { ItemListData } from '@/models/itemListResponse'
 import { useSetAtom } from 'jotai'
 import { selectedImageIDAtom } from '@/components/Jotais'
