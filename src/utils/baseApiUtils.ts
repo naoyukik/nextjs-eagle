@@ -28,6 +28,7 @@ export async function getEagleData<T>(urlPath: string, addQueryParams?: string[]
   const res = await fetch(process.env.NEXT_PUBLIC_EAGLE_ENDPOINT.concat(urlPath, "?", query.toString()), {
     cache: "no-store",
   });
+    cache: 'default',
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");

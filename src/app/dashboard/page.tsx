@@ -1,8 +1,6 @@
 import Navigation from '@/components/server/Navigation'
-import Thumbnails from '@/components/server/Thumbnails'
 import React from 'react'
 import DashboardLayout from '@/app/layout/DashboardLayout'
-import Dashboard from '@/components/client/Dashboard'
 import ImageInformation from '@/components/ImageInformation'
 import InfiniteThumbnails from '@/components/client/InfiniteThumbnails'
 
@@ -30,7 +28,7 @@ const DashboardHome = async (request: DashboardHomeProps) => {
     <DashboardLayout>
       <Navigation />
       <InfiniteThumbnails searchParams={request.searchParams} />
-      <ImageInformation params={undefined} />
+      <ImageInformation />
     </DashboardLayout>
   )
 }

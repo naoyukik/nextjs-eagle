@@ -1,6 +1,6 @@
 export interface ItemInfoResponse {
-  status: string;
-  data: Item;
+  status: string
+  data: Item
 }
 
 interface Item {
@@ -19,6 +19,7 @@ interface Item {
   noThumbnail: boolean;
   lastModified: number;
   palettes: Palette[];
+export interface Item {
 }
 
 interface Palette {
