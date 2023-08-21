@@ -70,7 +70,7 @@ const ImageInformation = ({ params }: ImageInformationType) => {
         <li>{items.tags.map((t) => t + ' ')}</li>
         <li>
           <pre style={{ whiteSpace: 'pre-wrap' }}>{items.annotation}</pre>
-          <button onClick={() => copyToClipboard(items.annotation)}>Copy</button>
+          {items.annotation && <button onClick={() => copyToClipboard(items.annotation)}>Copy</button>}
         </li>
       </ul>
     </aside>
