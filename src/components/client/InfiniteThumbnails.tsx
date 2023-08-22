@@ -56,17 +56,20 @@ const InfiniteThumbnails = (props: Pick<DashboardHomeProps, 'searchParams'>) => 
   folder && queryParams.push(`folders=${folder}`)
 
   useEffect(() => {
+    let isFetchCurrent = isFetch
+
     // Reset the fetched data when transitioning pages.
     if (prevPath !== pathName || prevFolder !== folder) {
       setFetchItems([])
       setPage(0)
       setPrevPath(pathName)
-      setIsFetch(true)
+      isFetchCurrent = true
+      setIsFetch(isFetchCurrent)
       setPrevFolder(folder)
     }
 
-    console.log(`isFetch: ${isFetch}`)
-    if (!isFetch) return
+    console.log(`isFetch: ${isFetchCurrent}`)
+    if (isFetchCurrent === false) return
 
     setLoading(true)
     queryParams.push(`offset=${page}`)
