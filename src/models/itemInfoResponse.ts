@@ -17,7 +17,7 @@ export interface Item {
   width: number
   height: number
   noThumbnail: boolean
-  lastModified: number
+  lastModified?: number
   palettes: Palette[]
   btime: number
   mtime: number
