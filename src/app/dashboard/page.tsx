@@ -1,7 +1,7 @@
 import Navigation from '@/components/server/Navigation'
 import React from 'react'
 import DashboardLayout from '@/app/layout/DashboardLayout'
-import ImageInformation from '@/components/ImageInformation'
+import ImageInformation from '@/components/client/ImageInformation'
 import InfiniteThumbnails from '@/components/client/InfiniteThumbnails'
 
 // export default async function Dashboard(): Promise<React.JSX.Element> {

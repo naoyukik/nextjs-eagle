@@ -1,5 +1,5 @@
 import { getEagleData } from '@/utils/baseApiUtils'
-import { LibraryInfoResponse } from '@/models/libraryInfoResponse'
+import { Data, Folder, LibraryInfoResponse, SmartFolder } from '@/models/libraryInfoResponse'
 import Link from 'next/link'
 import styles from '../../styles/navigation.module.scss'
 import crypto from 'crypto'
@@ -22,7 +22,7 @@ function getId(url: string): string {
 const initialFixedFolders: FixedFolder[] = [
   {
     id: getId('/dashboard'),
-    name: 'すべての画像',
+    name: 'all',
     url: '/dashboard',
   },
 ]
@@ -32,9 +32,24 @@ const Navigation = async () => {
     return response.data
   })
 
+  const recursiveFolderBuilder = (folders: Folder[] | SmartFolder[]) => {
+    return (
+      <ul className={styles.folders}>
+        {folders.map((folder: Folder | SmartFolder) => (
+          <li key={folder.id}>
+            <Link className={styles.folders__list} href={`/dashboard?folder=${folder.id}`}>
+              {folder.name}
+            </Link>
+            {folder.children.length > 0 && recursiveFolderBuilder(folder.children)}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
   return (
     <aside className={styles.sticky}>
-      <h2>ライブラリ</h2>
+      <h2>Library</h2>
       <ul className={styles.folders}>
         {initialFixedFolders.map((item) => (
           <li key={item.id} className={styles.folders__list}>
@@ -42,22 +57,10 @@ const Navigation = async () => {
           </li>
         ))}
       </ul>
-      <h2>スマートフォルダ</h2>
-      <ul className={styles.folders}>
-        {items.smartFolders.map((item) => (
-          <li key={item.id} className={styles.folders__list}>
-            <Link href={`/dashboard?folder=${item.id}`}>{item.name}</Link>
-          </li>
-        ))}
-      </ul>
-      <h2>フォルダ</h2>
-      <ul className={styles.folders}>
-        {items.folders.map((item) => (
-          <li key={item.id} className={styles.folders__list}>
-            <Link href={`/dashboard?folder=${item.id}`}>{item.name}</Link>
-          </li>
-        ))}
-      </ul>
+      <h2 className={styles.title}>Smart folder</h2>
+      {recursiveFolderBuilder(items.smartFolders)}
+      <h2 className={styles.title}>Folder</h2>
+      {recursiveFolderBuilder(items.folders)}
     </aside>
   )
 }

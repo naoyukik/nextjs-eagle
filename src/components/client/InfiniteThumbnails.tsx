@@ -3,7 +3,7 @@
 import { getEagleData } from '@/utils/baseApiUtils'
 import { ItemListData, ItemListResponse } from '@/models/itemListResponse'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import Thumbnail from '@/components/Thumbnail'
+import Thumbnail from '@/components/client/Thumbnail'
 import { DashboardHomeProps } from '@/app/dashboard/page'
 import { usePathname } from 'next/navigation'
 

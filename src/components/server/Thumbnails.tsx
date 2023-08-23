@@ -1,7 +1,7 @@
 import { getEagleData } from '@/utils/baseApiUtils'
 import { ItemListData, ItemListResponse } from '@/models/itemListResponse'
 import React from 'react'
-import Thumbnail from '@/components/Thumbnail'
+import Thumbnail from '@/components/client/Thumbnail'
 import { DashboardHomeProps } from '@/app/dashboard/page'
 
 const initialQueryParams = ['limit=6', 'orderBy=CREATEDATE']
