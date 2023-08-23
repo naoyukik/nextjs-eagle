@@ -73,7 +73,7 @@ const ImageInformation = ({ params }: ImageInformationType) => {
           <pre style={{ whiteSpace: 'pre-wrap' }}>{items.annotation}</pre>
           {items.annotation && <button onClick={() => copyToClipboard(items.annotation)}>Copy</button>}
         </li>
-        <li>Added: {format(new Date(items.lastModified), 'yyyy/MM/dd HH:mm')}</li>
+        <li>Added: {format(new Date(items.modificationTime), 'yyyy/MM/dd HH:mm')}</li>
         <li>Created: {format(new Date(items.btime), 'yyyy/MM/dd HH:mm')}</li>
         <li>Modified: {format(new Date(items.mtime), 'yyyy/MM/dd HH:mm')}</li>
       </ul>
