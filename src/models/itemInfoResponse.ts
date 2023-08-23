@@ -19,6 +19,8 @@ export interface Item {
   noThumbnail: boolean
   lastModified: number
   palettes: Palette[]
+  btime: number
+  mtime: number
 }
 
 interface Palette {

@@ -6,6 +6,7 @@ import { useAtomValue, useSetAtom } from 'jotai'
 import { selectedImageIDAtom } from '@/components/Jotais'
 import { useEffect, useState } from 'react'
 import styles from '../../styles/navigation.module.scss'
+import { format } from 'date-fns'
 
 /**
  * Retrieves the thumbnail for a given thumbnailId.
@@ -72,6 +73,9 @@ const ImageInformation = ({ params }: ImageInformationType) => {
           <pre style={{ whiteSpace: 'pre-wrap' }}>{items.annotation}</pre>
           {items.annotation && <button onClick={() => copyToClipboard(items.annotation)}>Copy</button>}
         </li>
+        <li>Added: {format(new Date(items.lastModified), 'yyyy/MM/dd HH:mm')}</li>
+        <li>Created: {format(new Date(items.btime), 'yyyy/MM/dd HH:mm')}</li>
+        <li>Modified: {format(new Date(items.mtime), 'yyyy/MM/dd HH:mm')}</li>
       </ul>
     </aside>
   )

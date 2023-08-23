@@ -134,16 +134,22 @@ components:
             properties:
                 id:
                     type: string
-                    example: "KB91GNOPDDVTH"
+                    example: "LIZMGV1TBTGQ8"
                 name:
                     type: string
-                    example: "running-man"
+                    example: "00023-3698311310"
                 size:
                     type: integer
-                    example: 36382
+                    example: 1518355
+                btime:
+                    type: integer
+                    example: 1686732835453
+                mtime:
+                    type: integer
+                    example: 1686731710495
                 ext:
                     type: string
-                    example: "svg"
+                    example: "png"
                 tags:
                     type: array
                     items:
@@ -153,28 +159,28 @@ components:
                     type: array
                     items:
                         type: string
-                    example: ["KB90QZMU641LI"]
+                    example: ["LIZMGV1PXMLAK"]
                 isDeleted:
                     type: boolean
                     example: false
                 url:
                     type: string
-                    example: "https://cn.eagle.cool/extensions"
+                    example: ""
                 annotation:
                     type: string
                     example: ""
                 modificationTime:
                     type: integer
-                    example: 1591774540009
+                    example: 1686983582513
                 height:
                     type: integer
-                    example: 166
+                    example: 1024
                 width:
                     type: integer
-                    example: 203
+                    example: 1024
                 lastModified:
                     type: integer
-                    example: 1591774540171
+                    example: 1686983582868
                 noThumbnail:
                     type: boolean
                     example: true
