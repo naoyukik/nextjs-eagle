@@ -23,3 +23,17 @@
 .title {
   margin-top: 20px;
 }
+
+.displayGroup {
+  line-height: 1.6em;
+  font-size: 12px;
+  padding: 10px;
+  background-color: #2a2b2f;
+  border-radius: 2px;
+  border-color: #17171c;
+  border-style: solid;
+
+  &Top {
+    margin-top: 12px;
+  }
+}
