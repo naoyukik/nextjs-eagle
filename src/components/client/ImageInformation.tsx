@@ -66,13 +66,19 @@ const ImageInformation = ({ params }: ImageInformationType) => {
 
   return (
     <aside className={styles.sticky}>
-      <ul>
+      <ul className={styles.displayGroup}>
         <li>{items.name}</li>
+      </ul>
+      <ul className={`${styles.displayGroup} ${styles.displayGroupTop}`}>
         <li>{items.tags.map((t) => t + ' ')}</li>
+      </ul>
+      <ul className={`${styles.displayGroup} ${styles.displayGroupTop}`}>
         <li>
           <pre style={{ whiteSpace: 'pre-wrap' }}>{items.annotation}</pre>
           {items.annotation && <button onClick={() => copyToClipboard(items.annotation)}>Copy</button>}
         </li>
+      </ul>
+      <ul className={`${styles.displayGroup} ${styles.displayGroupTop}`}>
         <li>Added: {format(new Date(items.modificationTime), 'yyyy/MM/dd HH:mm')}</li>
         <li>Created: {format(new Date(items.btime), 'yyyy/MM/dd HH:mm')}</li>
         <li>Modified: {format(new Date(items.mtime), 'yyyy/MM/dd HH:mm')}</li>
